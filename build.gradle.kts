@@ -18,13 +18,16 @@ repositories {
 extra["springCloudVersion"] = "2020.0.3"
 
 dependencies {
+	implementation("org.springframework.boot:spring-boot-starter")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.springframework.cloud:spring-cloud-stream")
-	implementation("org.springframework.cloud:spring-cloud-stream-binder-kafka")
-	implementation("org.springframework.kafka:spring-kafka")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("org.springframework.kafka:spring-kafka-test")
+
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
+	testImplementation("io.projectreactor:reactor-test")
+	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 }
 
 dependencyManagement {
