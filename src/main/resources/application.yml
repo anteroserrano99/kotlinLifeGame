@@ -1,0 +1,7 @@
+
+life:
+    game:
+        properties:
+            length: 3
+            height: 3
+
