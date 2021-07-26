@@ -29,25 +29,23 @@ val logger: Logger = LoggerFactory.getLogger(Intitializer::class.java)
     fun init(
 
     ) {
+
+        val stateManager = StateManager()
+
         logger.info("I started")
 
-        var nodeList: MutableList<ObserverNode> = mutableListOf()
-
-        for (i in 0..height) {
-            for(j in 0..length){
-                val node = Node(i, j)
-                nodeList.add(node)
-            }
-        }
-        var cluster = Cluster(nodeList)
-
-
+        val cluster = stateManager.getState()
 
         //TODO Example of how to use coroutines for our application
         runBlocking {
             launch {
                 delay(5000L)
                 cluster.notifyObservers(LifeGameEvent("An event has occured"))
+            }
+            launch {
+                delay(2000L)
+            logger.info("It been 2 seconds only")
+
             }
             logger.info("Im done immediately")
         }
