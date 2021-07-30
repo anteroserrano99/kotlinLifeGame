@@ -3,5 +3,5 @@ life:
     game:
         properties:
             length: 3
-            height: 3
+            height: 4
 

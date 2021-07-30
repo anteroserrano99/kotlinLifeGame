@@ -3,14 +3,16 @@ package com.game.life.simulation.business
 import com.game.life.simulation.model.node.Cluster
 import com.game.life.simulation.model.node.Node
 import com.game.life.simulation.model.node.ObserverNode
+import org.springframework.stereotype.Component
 import java.lang.RuntimeException
 import kotlin.properties.Delegates
 
 
 //TODO This is right now a mock class that must be modified in order to have persistence and also In Memory storage for performance
+@Component
 class StateManager {
 
-    private var cluster : Cluster
+    private lateinit var cluster : Cluster
 
     private val length : Int = 9
 

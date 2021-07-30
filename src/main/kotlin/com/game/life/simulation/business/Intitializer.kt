@@ -9,20 +9,22 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 @Component
 class Intitializer (
-        @Value("\${life.game.properties.length}") length: Int,
-        @Value("\${life.game.properties.height}") height: Int){
-
-    val length : Int = length
-    val height: Int = height
+        @Value("\${life.game.properties.length}") val length: Int,
+        @Value("\${life.game.properties.height}") val height: Int){
 
 
-val logger: Logger = LoggerFactory.getLogger(Intitializer::class.java)
+
+    @Autowired
+    private lateinit var stateManager : StateManager
+
+    val logger: Logger = LoggerFactory.getLogger(Intitializer::class.java)
 
 
     @PostConstruct
@@ -30,9 +32,9 @@ val logger: Logger = LoggerFactory.getLogger(Intitializer::class.java)
 
     ) {
 
-        val stateManager = StateManager()
 
-        logger.info("I started")
+
+        logger.info("I started at $length and $height ")
 
         val cluster = stateManager.getState()
 
