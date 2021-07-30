@@ -1,9 +1,6 @@
 package com.game.life.simulation.business
 
 import com.game.life.simulation.model.LifeGameEvent
-import com.game.life.simulation.model.node.Cluster
-import com.game.life.simulation.model.node.Node
-import com.game.life.simulation.model.node.ObserverNode
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking

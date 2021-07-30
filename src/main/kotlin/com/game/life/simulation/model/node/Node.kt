@@ -12,5 +12,6 @@ data class Node(var x: Int, val y: Int, val characterList : List<Character>? = A
 
     override fun update(event: LifeGameEvent) {
         logger.info("${event.action} in node $x $y")
+        logger.info("Characters = ${characterList.toString()}")
     }
 }

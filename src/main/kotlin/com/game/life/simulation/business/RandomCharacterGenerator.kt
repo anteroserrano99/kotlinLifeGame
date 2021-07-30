@@ -2,20 +2,31 @@ package com.game.life.simulation.business
 
 import com.game.life.simulation.model.Character
 import com.game.life.simulation.model.CharacterTier
+import org.springframework.stereotype.Component
 import kotlin.random.Random
-import kotlin.random.nextUInt
 
-class CharacterGenerator {
+class RandomCharacterGenerator {
 
-    fun generate(): Character {
 
-        return Character(
-                "N0" + Random.nextInt(0, 99).toString(),
-                Random.nextInt(100, 199),
-                Random.nextInt(200, 299),
-                CharacterTier.fromId(Random.nextInt(0, CharacterTier.values().size))
-        )
+    companion object {
+        fun generateCharacter(): Character {
+
+            return Character(
+                    "N0" + Random.nextInt(0, 99).toString(),
+                    Random.nextInt(100, 199),
+                    Random.nextInt(200, 299),
+                    CharacterTier.fromId(Random.nextInt(0, CharacterTier.values().size))
+            )
+        }
+
+        fun generateCharacterList() : List<Character> {
+
+            val characterList = ArrayList<Character>()
+            val listSize = Random.nextInt(0,2)
+            for (i in 1..listSize) characterList.add(generateCharacter())
+
+            return characterList
+        }
     }
-
 
 }
