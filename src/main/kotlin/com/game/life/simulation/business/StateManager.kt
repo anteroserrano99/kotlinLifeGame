@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component
 @Component
 class StateManager {
 
-    private lateinit var cluster : Cluster
+    private lateinit var cluster: Cluster
 
-    private val length : Int = 9
+    private val length: Int = 9
 
 
     init {
@@ -20,7 +20,7 @@ class StateManager {
         var nodeList: MutableList<ObserverNode> = mutableListOf()
 
         for (i in 0..length) {
-            nodeList.add(Node(0,i, RandomCharacterGenerator.generateCharacterList()
+            nodeList.add(Node(0, i, RandomCharacterGenerator.generateCharacterList()
             ))
         }
         this.cluster = Cluster(nodeList)
@@ -32,7 +32,7 @@ class StateManager {
         return cluster
     }
 
-    fun modifyNode(node : Node) : Node{
+    fun modifyNode(node: Node): Node {
         this.cluster.observerNodes[node.x] = node
 
         return node
@@ -43,7 +43,7 @@ class StateManager {
         return this.cluster.observerNodes[y] as Node
     }
 
-    fun insertNode(node : Node) {
+    fun insertNode(node: Node) {
         this.cluster.add(node)
     }
 

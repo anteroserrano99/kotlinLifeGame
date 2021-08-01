@@ -7,6 +7,6 @@ import org.springframework.boot.runApplication
 class LifeGameSimulationApplication
 
 fun main(args: Array<String>) {
-	runApplication<LifeGameSimulationApplication>(*args)
-	//TODO OBTENER EL ESTADO DE LA APPLICACION
+    runApplication<LifeGameSimulationApplication>(*args)
+    //TODO OBTENER EL ESTADO DE LA APPLICACION
 }

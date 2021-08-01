@@ -12,14 +12,13 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 @Component
-class Intitializer (
+class Intitializer(
         @Value("\${life.game.properties.length}") val length: Int,
-        @Value("\${life.game.properties.height}") val height: Int){
-
+        @Value("\${life.game.properties.height}") val height: Int) {
 
 
     @Autowired
-    private lateinit var stateManager : StateManager
+    private lateinit var stateManager: StateManager
 
     val logger: Logger = LoggerFactory.getLogger(Intitializer::class.java)
 
@@ -29,9 +28,7 @@ class Intitializer (
 
     ) {
 
-
-
-        logger.info("I started at $length and $height ")
+        logger.info("I started at $length and $height")
 
         val cluster = stateManager.getState()
 
@@ -43,7 +40,7 @@ class Intitializer (
             }
             launch {
                 delay(2000L)
-            logger.info("It been 2 seconds only")
+                logger.info("It been 2 seconds only")
 
             }
             logger.info("Im done immediately")

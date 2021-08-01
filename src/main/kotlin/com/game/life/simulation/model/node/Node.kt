@@ -5,7 +5,7 @@ import com.game.life.simulation.model.LifeGameEvent
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
-data class Node(var x: Int, val y: Int, val characterList : List<Character>? = ArrayList()) : ObserverNode {
+data class Node(var x: Int, val y: Int, val characterList: List<Character>? = ArrayList()) : ObserverNode {
 
     //TODO MODIFY LOGIC WITHIN A NODE
     private val logger: Logger = LoggerFactory.getLogger(Node::class.java)
