@@ -3,53 +3,46 @@ package com.game.life.simulation.business
 import com.game.life.simulation.model.node.Cluster
 import com.game.life.simulation.model.node.Node
 import com.game.life.simulation.model.node.ObserverNode
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Component
 
 
 //TODO This is right now a mock class that must be modified in order to have persistence and also In Memory storage for performance
 @Component
-class StateManager {
+class StateManager (@Value("\${life.game.properties.length}") val length: Int,
+                    @Value("\${life.game.properties.height}") val height: Int){
 
-    private lateinit var cluster: Cluster
-
-    private val length: Int = 9
+    private var clusterList: ArrayList<Cluster> = ArrayList()
 
 
     init {
 
-        var nodeList: MutableList<ObserverNode> = mutableListOf()
 
         for (i in 0..length) {
-            nodeList.add(Node(0, i, RandomCharacterGenerator.generateCharacterList()
-            ))
+            var nodeList: MutableList<ObserverNode> = mutableListOf()
+            for (j in 0..height) {
+                nodeList.add(Node(i, j, RandomCharacterGenerator.generateCharacterList()
+                ))
+            }
+            clusterList.add(Cluster(nodeList))
         }
-        this.cluster = Cluster(nodeList)
 
     }
 
 
-    fun getState(): Cluster {
-        return cluster
+    fun getState(): ArrayList<Cluster> {
+        return clusterList
     }
 
     fun modifyNode(node: Node): Node {
-        this.cluster.observerNodes[node.x] = node
+        this.clusterList[node.x].nodes[node.y] = node
 
         return node
 
     }
 
     fun getNode(x: Int, y: Int): Node {
-        return this.cluster.observerNodes[y] as Node
+        return this.clusterList[x].nodes[y] as Node
     }
-
-    fun insertNode(node: Node) {
-        this.cluster.add(node)
-    }
-
-    fun deleteNode(x: Int, y: Int) {
-        this.cluster.observerNodes.removeAt(y)
-    }
-
 
 }

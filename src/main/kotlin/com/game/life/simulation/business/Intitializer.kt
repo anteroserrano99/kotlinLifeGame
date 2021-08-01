@@ -12,9 +12,7 @@ import org.springframework.stereotype.Component
 import javax.annotation.PostConstruct
 
 @Component
-class Intitializer(
-        @Value("\${life.game.properties.length}") val length: Int,
-        @Value("\${life.game.properties.height}") val height: Int) {
+class Intitializer() {
 
 
     @Autowired
@@ -27,25 +25,25 @@ class Intitializer(
     fun init(
 
     ) {
-
-        logger.info("I started at $length and $height")
-
-        val cluster = stateManager.getState()
-
-        //TODO Example of how to use coroutines for our application
-        runBlocking {
-            launch {
-                delay(5000L)
-                cluster.notifyObservers(LifeGameEvent("An event has occured"))
-            }
-            launch {
-                delay(2000L)
-                logger.info("It been 2 seconds only")
-
-            }
-            logger.info("Im done immediately")
-        }
-        logger.info("I wait until the coroutine is done")
+//
+//        logger.info("I started at $length and $height")
+//
+//        val cluster = stateManager.getState()
+//
+//        //TODO Example of how to use coroutines for our application
+//        runBlocking {
+//            launch {
+//                delay(5000L)
+//                cluster.notifyObservers(LifeGameEvent("An event has occured"))
+//            }
+//            launch {
+//                delay(2000L)
+//                logger.info("It been 2 seconds only")
+//
+//            }
+//            logger.info("Im done immediately")
+//        }
+//        logger.info("I wait until the coroutine is done")
 
     }
 

@@ -3,18 +3,18 @@ package com.game.life.simulation.model.node
 import com.game.life.simulation.model.LifeGameEvent
 
 interface ObservableCluster {
-    val observerNodes: MutableList<ObserverNode>
+    val nodes: MutableList<ObserverNode>
 
     fun add(observerNode: ObserverNode) {
-        observerNodes.add(observerNode)
+        nodes.add(observerNode)
     }
 
     fun remove(observerNode: ObserverNode) {
-        observerNodes.remove(observerNode)
+        nodes.remove(observerNode)
     }
 
     fun notifyObservers(event: LifeGameEvent) {
-        observerNodes.forEach { observer -> observer.update(event) }
+        nodes.forEach { observer -> observer.update(event) }
     }
 
 

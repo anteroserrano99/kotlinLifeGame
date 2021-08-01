@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 class StateController {
 
-
     @Autowired
     private lateinit var stateManager: StateManager
 
     @GetMapping("/getState")
-    fun getState(): Cluster {
+    fun getState(): List<Cluster> {
 
         return stateManager.getState()
     }
